@@ -1,0 +1,10 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: ur_description
+    relative_path: urdf/ur5_robotiq_robot.urdf.xacro
+  SRDF:
+    relative_path: config/ur5_robotiq85.srdf
+  CONFIG:
+    author_name: Elisa Tosello
+    author_email: toselloe@gmail.com
+    generated_timestamp: 1486678110

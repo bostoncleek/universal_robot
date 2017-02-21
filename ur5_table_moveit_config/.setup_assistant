@@ -1,0 +1,10 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: ur_description
+    relative_path: urdf/ur5_table.urdf.xacro
+  SRDF:
+    relative_path: config/ur5_table.srdf
+  CONFIG:
+    author_name: Elisa
+    author_email: toselloe@dei.unipd.it
+    generated_timestamp: 1487281126

@@ -1,0 +1,10 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: ur_description
+    relative_path: urdf/ur5_robotiq85_kinect_table.urdf.xacro
+  SRDF:
+    relative_path: config/ur5_robotiq85_kinect.srdf
+  CONFIG:
+    author_name: Elisa Tosello
+    author_email: toselloe@dei.unipd.it
+    generated_timestamp: 1487015425

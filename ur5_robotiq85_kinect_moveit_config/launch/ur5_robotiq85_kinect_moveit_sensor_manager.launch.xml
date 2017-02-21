@@ -1,0 +1,11 @@
+<launch>
+
+<arg name="kinect" default="false"/>
+
+<group if="$(arg kinect)">
+<rosparam command="load" file="$(find ur5_robotiq85_kinect_moveit_config)/config/sensors_kinect.yaml" />
+
+</group>
+
+
+</launch>

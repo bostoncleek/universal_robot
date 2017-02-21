@@ -45,6 +45,9 @@
   <xacro:property name="shoulder_offset" value="0.13585" />  <!-- measured from model -->
   <xacro:property name="elbow_offset" value="-0.1197" /> <!-- measured from model -->
 
+
+  <xacro:property name="angle_offset" value="${pi * 0.5}" /> <!-- measured from model -->
+
   <!-- link lengths used in model -->
   <xacro:property name="shoulder_height" value="${ur5_d1}" />
   <xacro:property name="upper_arm_length" value="${-ur5_a2}" />
@@ -102,7 +105,7 @@
     <joint name="${prefix}shoulder_pan_joint" type="revolute">
       <parent link="${prefix}base_link" />
       <child link = "${prefix}shoulder_link" />
-      <origin xyz="0.0 0.0 ${shoulder_height}" rpy="0.0 0.0 0.0" />
+      <origin xyz="0.0 0.0 ${shoulder_height}" rpy="0 0.0 0" />
       <axis xyz="0 0 1" />
       <xacro:unless value="${joint_limited}">
         <limit lower="${-2.0 * pi}" upper="${2.0 * pi}" effort="150.0" velocity="3.15"/>
@@ -135,7 +138,8 @@
     <joint name="${prefix}shoulder_lift_joint" type="revolute">
       <parent link="${prefix}shoulder_link" />
       <child link = "${prefix}upper_arm_link" />
-      <origin xyz="0.0 ${shoulder_offset} 0.0" rpy="0.0 ${pi / 2.0} 0.0" />
+      <origin xyz="0.0 ${shoulder_offset} 0.0" rpy="0.0 ${angle_offset} 0.0" />
+<!--      <origin xyz="0.0 ${shoulder_offset} 0.0" rpy="0.0 ${angle_offset} 0.0" /> -->
       <axis xyz="0 1 0" />
       <xacro:unless value="${joint_limited}">
         <limit lower="${-2.0 * pi}" upper="${2.0 * pi}" effort="150.0" velocity="3.15"/>
