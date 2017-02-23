@@ -1,0 +1,5 @@
+<launch>
+
+  <node name="set_initial_state" pkg="ur_gazebo" type="set_initial_state.py" output="screen"/>
+
+</launch>
