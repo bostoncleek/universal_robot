@@ -1,0 +1,5 @@
+<launch>
+
+  <node name="force_torque_sensor" pkg="robotiq_force_torque_sensor" type="rq_test_sensor" output="screen"/>
+
+</launch>
