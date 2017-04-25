@@ -2,7 +2,8 @@
 <launch>
 
   <arg name="limited" default="false"/>
+  <arg name="prefix" default=""/>
 
   <param unless="$(arg limited)" name="robot_description" command="$(find xacro)/xacro --inorder '$(find ur_description)/urdf/ur5_robotiq_robot.urdf.xacro'" />
-  <param if="$(arg limited)" name="robot_description" command="$(find xacro)/xacro --inorder '$(find ur_description)/urdf/ur5_robotiq_robot_limited.urdf.xacro'" />
+  <param if="$(arg limited)" name="robot_description" command="$(find xacro)/xacro --inorder '$(find ur_description)/urdf/$(arg prefix)ur5_robotiq_robot_limited.urdf.xacro'" />
 </launch>
