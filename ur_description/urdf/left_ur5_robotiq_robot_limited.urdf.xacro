@@ -39,11 +39,11 @@
   </joint>
 
 <!-- attach the robot to the box -->
- <joint name="left_box_joint" type="fixed">
-    <parent link="box_link"/>
-    <child link="left_base_link"/>
-    <origin xyz="0.0 -0.381 0.4572" rpy="0 0 1.57" />
- </joint>
+   <joint name="left_box_joint" type="fixed">
+      <parent link="box_link"/>
+      <child link="left_base_link"/>
+      <origin xyz="-0.762 -0.381 0.4572" rpy="0 0 1.57" />
+   </joint>
 
  <!-- Force Torque Sensor -->
  <xacro:include filename="$(find robotiq_force_torque_sensor)/urdf/robotiq_fts300.urdf.xacro" />
