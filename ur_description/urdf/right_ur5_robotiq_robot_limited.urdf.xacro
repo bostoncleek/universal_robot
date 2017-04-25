@@ -17,12 +17,12 @@
   <link name="box_link">
     <visual>
       <geometry>
-        <box size="0.762 1.524 0.9144"/>
+        <box size="2.286 1.524 0.9144"/>
       </geometry>
     </visual>
     <collision>
       <geometry>
-        <box size="0.762 1.524 0.9144"/>
+        <box size="2.286 1.524 0.9144"/>
       </geometry>
     </collision>
     <inertial>
@@ -39,11 +39,11 @@
   </joint>
 
 <!-- attach the robot to the box -->
- <joint name="right_box_joint" type="fixed">
-    <parent link="box_link"/>
-    <child link="right_base_link"/>
-    <origin xyz="0.0 -0.381 0.4572" rpy="0 0 1.57" />
- </joint>
+   <joint name="right_box_joint" type="fixed">
+      <parent link="box_link"/>
+      <child link="right_base_link"/>
+      <origin xyz="0.762 -0.381 0.4572" rpy="0 0 1.57" />
+   </joint>
 
  <!-- Force Torque Sensor -->
  <xacro:include filename="$(find robotiq_force_torque_sensor)/urdf/robotiq_fts300.urdf.xacro" />
