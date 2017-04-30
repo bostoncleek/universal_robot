@@ -6,6 +6,9 @@
   <remap if="$(arg sim)" from="left_manipulator/follow_joint_trajectory" to="/left_arm_controller/follow_joint_trajectory"/>
   <remap if="$(arg sim)" from="right_manipulator/follow_joint_trajectory" to="/right_arm_controller/follow_joint_trajectory"/>
 
+  <!-- launch file to bring right/left manipulators into single joint_states -->
+  <include file="$(find ur_modern_driver)/launch/combine_joint_states.launch"/>
+
   <!-- Launch moveit -->
   <include file="$(find ur5_double_moveit_config)/launch/move_group.launch">
     <arg name="debug" default="$(arg debug)" />
