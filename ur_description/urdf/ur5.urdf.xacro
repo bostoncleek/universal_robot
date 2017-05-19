@@ -46,7 +46,7 @@
   <xacro:property name="elbow_offset" value="-0.1197" /> <!-- measured from model -->
 
 
-  <xacro:property name="angle_offset" value="${pi * 0.5}" /> <!-- measured from model -->
+  <xacro:property name="angle_offset" value="${0}" /> <!-- measured from model -->
 
   <!-- link lengths used in model -->
   <xacro:property name="shoulder_height" value="${ur5_d1}" />

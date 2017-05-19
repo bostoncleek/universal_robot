@@ -3,7 +3,7 @@
        name="ur5" >
 
   <!-- common stuff -->
-  <xacro:include filename="$(find ur_description)/urdf/common.gazebo.xacro" />
+  <!-- <xacro:include filename="$(find ur_description)/urdf/common.gazebo.xacro" /> -->
 
   <!-- ur5 -->
   <xacro:include filename="$(find ur_description)/urdf/ur5.urdf.xacro" />
@@ -18,5 +18,10 @@
     <child link = "base_link" />
     <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
   </joint>
+
+  <gazebo>
+    <plugin name="fetch_gazebo_plugin" filename="libfetch_gazebo_plugin.so"/>
+    <self_collide>1</self_collide>
+  </gazebo>
 
 </robot>
