@@ -1,0 +1,77 @@
+
+include "classFancy.robray"
+include "tableFancy.robray"
+
+
+/**********/
+/* plates */
+/**********/
+
+frame tray1 {
+    parent front_table;
+    translation [0.1, 0.0, tray_stack];
+    geometry {
+        shape box;
+        isa box;
+        isa green;
+        isa surface;
+        isa tray;
+        dimension [.4, .3, tray_size];
+    }
+}
+
+frame block_a {
+    parent back_table;
+    translation [0, 0, 0.001];
+    geometry {
+        isa plate;
+        isa red;
+    }
+}
+
+frame block_b {
+    parent block_a;
+    translation [0, 0, plate_stack];
+    geometry {
+        isa plate;
+        isa blue;
+    }
+}
+frame block_c {
+    parent back_table;
+    translation [-.2, 0, 0.001];
+    geometry {
+        isa plate;
+        isa green;
+    }
+}
+
+/* frame block_b { */
+/*     parent back_table; */
+/*     translation [-0.3, 0, table_stack]; */
+/*     geometry { */
+/*         isa plate; */
+/*         isa green; *//*     } */
+/* } */
+
+/**********/
+/* cups */
+/**********/
+
+/* frame block_c { */
+/*     parent back_table; */
+/*     translation [0.1, 0, table_stack]; */
+/*     geometry { */
+/*         isa cup; */
+/*         isa red; */
+/*     } */
+/* } */
+
+/* frame block_d { */
+/*     parent back_table; */
+/*     translation [0.3, 0, table_stack]; */
+/*     geometry { */
+/*         isa cup; */
+/*         isa red; */
+/*     } */
+/* } */
