@@ -597,6 +597,12 @@
         <box size="2.286 1.524 0.9144"/>
       </geometry>
     </visual>
+
+    <collision>
+      <geometry>
+        <box size="2.286 1.524 0.9144"/>
+      </geometry>
+    </collision>
   </link>
   <!-- attach the box to the world-->
   <joint name="world_joint" type="fixed">

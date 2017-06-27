@@ -6,9 +6,12 @@ project(ur_description)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED)
 
+list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
+#set(CMAKE_MODULE_PATH $ENV{CMAKE_MODULE_PATH}:${PROJECT_SOURCE_DIR}/cmake)
+
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
-
+find_package(AMINO)
 
 ## Uncomment this if the package has a setup.py. This macro ensures
 ## modules and global scripts declared therein get installed
@@ -51,7 +54,6 @@ catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES ur_description
 #  CATKIN_DEPENDS urdf
-#  DEPENDS system_lib
 )
 
 ###########
@@ -60,19 +62,41 @@ catkin_package(
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
-# include_directories(include ${catkin_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
+if (AMINO_FOUND)
+    include_directories(include ${AMINO_INCLUDE_DIRS})
 
-## Declare a cpp library
-# add_library(ur_description
-#   src/${PROJECT_NAME}/ur_description.cpp
-# )
+    ## Declare a cpp library
 
-## Declare a cpp executable
-# add_executable(ur_description_node src/ur_description_node.cpp)
+    ## Set library and generated file names.
+    set(ONE_ARM_C one-arm-scene.c)
+    set(ONE_ARM_LIB kavrakilab-one-arm-scene)
+    set(TWO_ARM_C two-arm-scene.c)
+    set(TWO_ARM_LIB kavrakilab-two-arm-scene)
+    ## TODO: Handle ROS_PACKAGE_PATH env variable here.
 
-## Add cmake target dependencies of the executable/library
-## as an example, message headers may need to be generated before nodes
-# add_dependencies(ur_description_node ur_description_generate_messages_cpp)
+    add_custom_command(OUTPUT ur5_robotiq_robot_limited.urdf COMMAND 
+                        rosrun xacro xacro -o ur5_robotiq_robot_limited.urdf ${CMAKE_CURRENT_SOURCE_DIR}/urdf/ur5_robotiq_robot_limited.urdf.xacro)
+    add_custom_command(OUTPUT ${ONE_ARM_C} COMMAND 
+                        aarxc ur5_robotiq_robot_limited.urdf -o ${ONE_ARM_C} -n "kavrakilab")
+    set_source_files_properties(ur5_robotiq_robot_limited.urdf PROPERTIES GENERATED TRUE)
+    set_source_files_properties(${ONE_ARM_C} PROPERTIES GENERATED TRUE)
+    add_custom_target(${ONE_ARM_C} DEPENDS ur5_robotiq_robot_limited.urdf)
+    add_library(${ONE_ARM_LIB} SHARED ${ONE_ARM_C})
+
+    ## Both arm scene library.
+    add_custom_command(OUTPUT ${TWO_ARM_C} COMMAND
+                        aarxc ${CMAKE_CURRENT_SOURCE_DIR}/urdf/2_ur5.urdf -o ${TWO_ARM_C} -n "kavrakilab")
+    set_source_files_properties(${TWO_ARM_C} PROPERTIES GENERATED TRUE)
+    add_custom_target(two_arm_target ALL DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/urdf/2_ur5.urdf)
+    add_library(${TWO_ARM_LIB} SHARED ${TWO_ARM_C})
+
+    ## Add cmake target dependencies of the executable/library
+    ## as an example, message headers may need to be generated before nodes
+    add_dependencies(${ONE_ARM_LIB} ${ONE_ARM_C})
+    add_dependencies(${TWO_ARM_LIB} two_arm_target)
+else()
+    message(WARNING "Amino was not found. Complied scenegraph libaries will not be generated.") 
+endif()
 
 ## Specify libraries to link a library or executable target against
 # target_link_libraries(ur_description_node
@@ -86,6 +110,9 @@ catkin_package(
 install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 install(DIRECTORY urdf DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 install(DIRECTORY meshes DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
+install(TARGETS ${ONE_ARM_LIB} ${TWO_ARM_LIB}
+        RUNTIME DESTINATION lib
+        LIBRARY DESTINATION lib)
 
 # all install targets should use catkin DESTINATION variables
 # See http://ros.org/doc/api/catkin/html/adv_user_guide/variables.html
