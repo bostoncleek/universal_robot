@@ -59,7 +59,7 @@ gazebo:
   default_controllers:
     - "follow_joint_trajectory"
     - "gravity_compensation"
-    # - "velocity"
+    - "velocity"
     - "weightless_torque"
   shoulder_pan_joint:
     position:
