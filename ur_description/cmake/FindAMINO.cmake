@@ -6,6 +6,5 @@ if(PKGCONFIG_FOUND)
         set(AMINO_INCLUDE_DIRS "/usr/local/include/amino-1.0")
     endif()
 endif()
-message("Found Amino: ${AMINO_INCLUDE_DIRS}, ${AMINO_LIBRARIES}")
 find_package_handle_standard_args(AMINO DEFAULT_MSG AMINO_LIBRARIES AMINO_INCLUDE_DIRS)
 

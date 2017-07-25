@@ -7,7 +7,6 @@ project(ur_description)
 find_package(catkin REQUIRED)
 
 list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
-#set(CMAKE_MODULE_PATH $ENV{CMAKE_MODULE_PATH}:${PROJECT_SOURCE_DIR}/cmake)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -72,12 +71,17 @@ if (AMINO_FOUND)
     set(ONE_ARM_LIB kavrakilab-one-arm-scene)
     set(TWO_ARM_C two-arm-scene.c)
     set(TWO_ARM_LIB kavrakilab-two-arm-scene)
-    ## TODO: Handle ROS_PACKAGE_PATH env variable here.
+    set(ENV{ROS_PACKAGE_PATH}
+        "${CMAKE_SOURCE_DIR}/..:${CMAKE_SOURCE_DIR}/../../robotiq_85_gripper:$ENV{ROS_PACKAGE_PATH}")
 
-    add_custom_command(OUTPUT ur5_robotiq_robot_limited.urdf COMMAND 
+    add_custom_command(OUTPUT ur5_robotiq_robot_limited.urdf COMMAND
                         rosrun xacro xacro -o ur5_robotiq_robot_limited.urdf ${CMAKE_CURRENT_SOURCE_DIR}/urdf/ur5_robotiq_robot_limited.urdf.xacro)
-    add_custom_command(OUTPUT ${ONE_ARM_C} COMMAND 
-                        aarxc ur5_robotiq_robot_limited.urdf -o ${ONE_ARM_C} -n "kavrakilab")
+    # env vars SET in CMakeLists.txt only take effect for cmake itself,
+    # so we have to wrap the call with `cmake -E env`
+    add_custom_command(OUTPUT ${ONE_ARM_C} COMMAND
+                       ${CMAKE_COMMAND} -E env
+                       "ROS_PACKAGE_PATH=$ENV{ROS_PACKAGE_PATH}"
+                       aarxc ur5_robotiq_robot_limited.urdf -o ${ONE_ARM_C} -n "kavrakilab")
     set_source_files_properties(ur5_robotiq_robot_limited.urdf PROPERTIES GENERATED TRUE)
     set_source_files_properties(${ONE_ARM_C} PROPERTIES GENERATED TRUE)
     add_custom_target(${ONE_ARM_C} DEPENDS ur5_robotiq_robot_limited.urdf)
@@ -85,7 +89,9 @@ if (AMINO_FOUND)
 
     ## Both arm scene library.
     add_custom_command(OUTPUT ${TWO_ARM_C} COMMAND
-                        aarxc ${CMAKE_CURRENT_SOURCE_DIR}/urdf/2_ur5.urdf -o ${TWO_ARM_C} -n "kavrakilab")
+                       ${CMAKE_COMMAND} -E env
+                       "ROS_PACKAGE_PATH=$ENV{ROS_PACKAGE_PATH}"
+                       aarxc ${CMAKE_CURRENT_SOURCE_DIR}/urdf/2_ur5.urdf -o ${TWO_ARM_C} -n "kavrakilab")
     set_source_files_properties(${TWO_ARM_C} PROPERTIES GENERATED TRUE)
     add_custom_target(two_arm_target ALL DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/urdf/2_ur5.urdf)
     add_library(${TWO_ARM_LIB} SHARED ${TWO_ARM_C})
@@ -95,7 +101,7 @@ if (AMINO_FOUND)
     add_dependencies(${ONE_ARM_LIB} ${ONE_ARM_C})
     add_dependencies(${TWO_ARM_LIB} two_arm_target)
 else()
-    message(WARNING "Amino was not found. Complied scenegraph libaries will not be generated.") 
+    message(WARNING "Amino was not found. Complied scenegraph libaries will not be generated.")
 endif()
 
 ## Specify libraries to link a library or executable target against
