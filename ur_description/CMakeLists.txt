@@ -75,7 +75,7 @@ if (AMINO_FOUND)
         "${CMAKE_SOURCE_DIR}/..:${CMAKE_SOURCE_DIR}/../../robotiq_85_gripper:$ENV{ROS_PACKAGE_PATH}")
 
     add_custom_command(OUTPUT ur5_robotiq_robot_limited.urdf COMMAND
-                        rosrun xacro xacro -o ur5_robotiq_robot_limited.urdf ${CMAKE_CURRENT_SOURCE_DIR}/urdf/ur5_robotiq_robot_limited.urdf.xacro)
+                        rosrun xacro xacro --inorder -o ur5_robotiq_robot_limited.urdf ${CMAKE_CURRENT_SOURCE_DIR}/urdf/ur5_robotiq_robot_limited.urdf.xacro)
     # env vars SET in CMakeLists.txt only take effect for cmake itself,
     # so we have to wrap the call with `cmake -E env`
     add_custom_command(OUTPUT ${ONE_ARM_C} COMMAND
