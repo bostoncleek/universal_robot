@@ -3,7 +3,15 @@ planner_configs:
     plugin: ompl_interface/TrajOptPlanningContext # Fully qualified name of the plugin.
     type: geometric::TrajOpt
     range: 0.0 # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
     safety_distance: 0.25 # Distance at which penalities start to occur.
+=======
+    safety_distance: 0.001 # Distance at which penalities start to occur.
+>>>>>>> Stashed changes
+=======
+    safety_distance: 0.001 # Distance at which penalities start to occur.
+>>>>>>> Stashed changes
   SBLkConfigDefault:
     plugin: ompl_interface/GeometricPlanningContext # This line was added, fully qualified name of the plugin created.
     type: geometric::SBL
@@ -176,6 +184,14 @@ manipulator:
     - SPARStwokConfigDefault
 gripper:
   planner_configs:
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+    - TrajOptkConfigDefault
+>>>>>>> Stashed changes
+=======
+    - TrajOptkConfigDefault
+>>>>>>> Stashed changes
     - SBLkConfigDefault
     - ESTkConfigDefault
     - LBKPIECEkConfigDefault

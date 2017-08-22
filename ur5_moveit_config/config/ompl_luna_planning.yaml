@@ -3,7 +3,7 @@ planner_configs:
     plugin: ompl_interface/TrajOptPlanningContext # Fully qualified name of the plugin.
     type: geometric::TrajOpt
     range: 0.0 # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
-    safety_distance: 0.25 # Distance at which penalities start to occur.
+    safety_distance: 0.01 # Distance at which penalities start to occur.
   SBLkConfigDefault:
     plugin: ompl_interface/GeometricPlanningContext # This line was added, fully qualified name of the plugin created.
     type: geometric::SBL
@@ -70,6 +70,7 @@ planner_configs:
     type: geometric::PRMstar
 manipulator:
   planner_configs:
+    - TrajOptkConfigDefault
     - SBLkConfigDefault
     - ESTkConfigDefault
     - LBKPIECEkConfigDefault
