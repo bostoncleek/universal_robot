@@ -5,6 +5,7 @@
 
   <arg name="pipeline" default="ompl_luna" />
 
-  <include file="$(find ur5_robotiq85_moveit_config)/launch/$(arg pipeline)_planning_pipeline.launch.xml" />
+  <!--include file="$(find ur5_robotiq85_moveit_config)/launch/$(arg pipeline)_planning_pipeline.launch.xml" /-->
+  <include file="$(find ur5_robotiq85_moveit_config)/launch/ompl_luna_planning_pipeline.launch.xml" />
 
 </launch>

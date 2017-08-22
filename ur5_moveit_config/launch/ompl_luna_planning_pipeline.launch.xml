@@ -3,7 +3,15 @@
   <!-- OMPL Plugin for MoveIt! -->
   <arg name="planning_plugin" value="ompl_interface/OMPLPlanningContextManager" />
 
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
   <!-- The request adapters (plugins) used when planning with OMPL. 
+=======
+  <!-- The request adapters (plugins) used when planning with OMPL.
+>>>>>>> Stashed changes
+=======
+  <!-- The request adapters (plugins) used when planning with OMPL.
+>>>>>>> Stashed changes
        ORDER MATTERS -->
   <arg name="planning_adapters" value="default_planner_request_adapters/AddTimeParameterization
 				       default_planner_request_adapters/FixWorkspaceBounds
@@ -17,6 +25,14 @@
   <param name="request_adapters" value="$(arg planning_adapters)" />
   <param name="start_state_max_bounds_error" value="$(arg start_state_max_bounds_error)" />
 
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
   <rosparam command="load" file="$(find ur5_moveit_config)/config/ompl_planning.yaml"/>
+=======
+  <rosparam command="load" file="$(find ur5_moveit_config)/config/ompl_luna_planning.yaml"/>
+>>>>>>> Stashed changes
+=======
+  <rosparam command="load" file="$(find ur5_moveit_config)/config/ompl_luna_planning.yaml"/>
+>>>>>>> Stashed changes
 
 </launch>
