@@ -2,6 +2,7 @@ controller_list:
   - name: ""
     action_ns: follow_joint_trajectory
     type: FollowJointTrajectory
+    default: true
     joints:
       - left_shoulder_pan_joint
       - left_shoulder_lift_joint
@@ -15,14 +16,14 @@ controller_list:
       - right_wrist_1_joint
       - right_wrist_2_joint
       - right_wrist_3_joint
-  - name: "gripper"
-    action_ns: follow_joint_trajectory
+  - name: "left_gripper"
+    action_ns: left_moveit_robotiq_commander
     type: FollowJointTrajectory
     default: true
     joints:
       - left_robotiq_85_left_knuckle_joint
-  - name: "gripper"
-    action_ns: follow_joint_trajectory
+  - name: "right_gripper"
+    action_ns: right_moveit_robotiq_commander
     type: FollowJointTrajectory
     default: true
     joints:
