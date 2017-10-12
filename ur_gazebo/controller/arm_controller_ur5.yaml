@@ -24,6 +24,16 @@ velocity:
     - wrist_2_joint
     - wrist_3_joint
 
+position:
+  type: "robot_controllers/PositionController"
+  joints:
+    - shoulder_pan_joint
+    - shoulder_lift_joint
+    - elbow_joint
+    - wrist_1_joint
+    - wrist_2_joint
+    - wrist_3_joint
+
 weightless_torque:
   type: "robot_controllers/WeightlessTorqueController"
   root: "base_link"
@@ -59,7 +69,8 @@ gazebo:
   default_controllers:
     - "follow_joint_trajectory"
     - "gravity_compensation"
-    # - "velocity"
+    - "velocity"
+    - "position"
     - "weightless_torque"
   shoulder_pan_joint:
     position:
