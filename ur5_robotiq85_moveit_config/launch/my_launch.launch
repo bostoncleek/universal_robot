@@ -5,7 +5,7 @@
   <!-- Allow user to specify database location -->
   <arg name="db_path" default="$(find ur5_robotiq85_moveit_config)/default_warehouse_mongo_db" />
 
-  <arg name="sim" default="true" />
+  <arg name="sim" default="false" />
     
   <!-- By default, we are not in debug mode -->
   <arg name="debug" default="false" />
