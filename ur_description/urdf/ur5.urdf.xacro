@@ -153,7 +153,7 @@
     <link name="${prefix}upper_arm_link">
       <visual>
         <geometry>
-          <mesh filename="package://ur_description/meshes/ur5/visual/upperarm.dae" />
+          <mesh filename="package://ur_description/meshes/ur5/visual/upperarm_snake.dae" />
         </geometry>
         <material name="LightGrey">
           <color rgba="0.7 0.7 0.7 1.0"/>
@@ -161,7 +161,7 @@
       </visual>
       <collision>
         <geometry>
-          <mesh filename="package://ur_description/meshes/ur5/collision/upperarm.stl" />
+          <mesh filename="package://ur_description/meshes/ur5/collision/upperarm_snake.stl" />
         </geometry>
       </collision>
       <xacro:cylinder_inertial radius="0.06" length="0.56" mass="${upper_arm_mass}">
@@ -186,7 +186,7 @@
     <link name="${prefix}forearm_link">
       <visual>
         <geometry>
-          <mesh filename="package://ur_description/meshes/ur5/visual/forearm.dae" />
+          <mesh filename="package://ur_description/meshes/ur5/visual/forearm_snake.dae" />
         </geometry>
         <material name="LightGrey">
           <color rgba="0.7 0.7 0.7 1.0"/>
@@ -194,7 +194,7 @@
       </visual>
       <collision>
         <geometry>
-          <mesh filename="package://ur_description/meshes/ur5/collision/forearm.stl" />
+          <mesh filename="package://ur_description/meshes/ur5/collision/forearm_snake.stl" />
         </geometry>
       </collision>
       <xacro:cylinder_inertial radius="0.06" length="0.5" mass="${forearm_mass}">
