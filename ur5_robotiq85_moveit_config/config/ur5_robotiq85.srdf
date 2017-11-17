@@ -10,9 +10,11 @@
     <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
     <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
     <group name="manipulator">
-        <chain base_link="box_link" tip_link="ee_link" />
+        <chain base_link="box_link" tip_link="fts_robotside" />
     </group>
     <group name="gripper">
+        <link name="fts_robotside"/>
+        <link name="fts_toolside"/>
         <link name="robotiq_85_base_link" />
         <link name="robotiq_85_left_inner_knuckle_link" />
         <link name="robotiq_85_left_finger_tip_link" />
@@ -42,15 +44,15 @@
         <joint name="robotiq_85_right_knuckle_joint" value="0" />
     </group_state>
     <group_state name="close" group="gripper">
-        <joint name="robotiq_85_left_finger_tip_joint" value="0" />
-        <joint name="robotiq_85_left_inner_knuckle_joint" value="0" />
+        <joint name="robotiq_85_left_finger_tip_joint" value="-0.804" />
+        <joint name="robotiq_85_left_inner_knuckle_joint" value="0.804" />
         <joint name="robotiq_85_left_knuckle_joint" value="0.804" />
-        <joint name="robotiq_85_right_finger_tip_joint" value="0" />
-        <joint name="robotiq_85_right_inner_knuckle_joint" value="0" />
-        <joint name="robotiq_85_right_knuckle_joint" value="0" />
+        <joint name="robotiq_85_right_finger_tip_joint" value="-0.8039" />
+        <joint name="robotiq_85_right_inner_knuckle_joint" value="0.8039" />
+        <joint name="robotiq_85_right_knuckle_joint" value="0.8039" />
     </group_state>
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
-    <end_effector name="moveit_eef" parent_link="ee_link" group="gripper" />
+    <end_effector name="moveit_eef" parent_link="fts_robotside" group="gripper" />
     <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
     <virtual_joint name="fixed_joint" type="fixed" parent_frame="world" child_link="box_link" />
     <!--PASSIVE JOINT: Purpose: this element is used to mark joints that are not actuated-->
