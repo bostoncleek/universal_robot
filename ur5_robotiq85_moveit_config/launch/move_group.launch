@@ -24,8 +24,9 @@
   <arg name="publish_monitored_planning_scene" default="true"/>
 
   <!-- Planning Functionality -->
+  <arg name="planner" default="ompl_luna" />
   <include ns="move_group" file="$(find ur5_robotiq85_moveit_config)/launch/planning_pipeline.launch.xml">
-    <arg name="pipeline" value="ompl_luna" />
+    <arg name="pipeline" value="$(arg planner)" />
   </include>
 
   <!-- Trajectory Execution Functionality -->
