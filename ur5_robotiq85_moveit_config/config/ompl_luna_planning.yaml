@@ -5,10 +5,15 @@ planner_configs:
     range: 0.0 # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
     safety_distance: 0.001 # Distance at which penalities start to occur.
     waypoints: 20 # Number of waypoints to start the path with.
+  BITstarkConfigDefault:
+    plugin: ompl_interface/GeometricPlanningContext
+    type: geometric::BITstar
+    range: 0.0
   SBLkConfigDefault:
     plugin: ompl_interface/GeometricPlanningContext # This line was added, fully qualified name of the plugin created.
     type: geometric::SBL
     range: 0.0  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
+    goal_bias: 0.05  # When close to goal select goal, with this probability? default: 0.05
   ESTkConfigDefault:
     plugin: ompl_interface/GeometricPlanningContext # This line was added, fully qualified name of the plugin created.
     type: geometric::EST
@@ -152,6 +157,7 @@ planner_configs:
 manipulator:
   planner_configs:
     - TrajOptkConfigDefault
+    - BITstarkConfigDefault
     - SBLkConfigDefault
     - ESTkConfigDefault
     - LBKPIECEkConfigDefault
