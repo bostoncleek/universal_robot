@@ -61,7 +61,10 @@ catkin_package(
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
-if (AMINO_FOUND)
+
+option(COMPILE_SCENEGRAPHS "Compiles scenegraphs from the urs using Amino." OFF)
+
+if (AMINO_FOUND AND COMPILE_SCENEGRAPHS)
     include_directories(include ${AMINO_INCLUDE_DIRS})
 
     ## Declare a cpp library
@@ -101,7 +104,7 @@ if (AMINO_FOUND)
     add_dependencies(${ONE_ARM_LIB} ${ONE_ARM_C})
     add_dependencies(${TWO_ARM_LIB} two_arm_target)
 else()
-    message(WARNING "Amino was not found. Complied scenegraph libaries will not be generated.")
+    message(STATUS "Complied scenegraph libaries (for Amino) will not be generated.")
 endif()
 
 ## Specify libraries to link a library or executable target against
