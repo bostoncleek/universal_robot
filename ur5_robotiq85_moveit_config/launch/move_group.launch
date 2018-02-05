@@ -1,5 +1,9 @@
 <launch>
 
+  <env name="ROSCONSOLE_CONFIG_FILE"
+       value="$(find ur5_robotiq85_moveit_config)/custom_rosconsole.conf"/>
+
+
   <arg name="prefix" default=""/>
   <include file="$(find ur5_robotiq85_moveit_config)/launch/planning_context.launch" >
     <arg name="prefix" value="$(arg prefix)"/>
@@ -29,6 +33,9 @@
     <arg name="pipeline" value="$(arg planner)" />
   </include>
 
+  <!-- Collision checking Functionality -->
+  <arg name="collisions" default="FCL"/>
+
   <!-- Trajectory Execution Functionality -->
   <include ns="move_group" file="$(find ur5_robotiq85_moveit_config)/launch/trajectory_execution.launch.xml" if="$(arg allow_trajectory_execution)">
     <arg name="moveit_manage_controllers" value="true" />
@@ -49,6 +56,7 @@
     <param name="allow_trajectory_execution" value="$(arg allow_trajectory_execution)"/>
     <param name="max_safe_path_cost" value="$(arg max_safe_path_cost)"/>
     <param name="jiggle_fraction" value="$(arg jiggle_fraction)" />
+    <param name="collision_detector" value="$(arg collisions)"/>
 
     <!-- load these non-default MoveGroup capabilities -->
     <!--
