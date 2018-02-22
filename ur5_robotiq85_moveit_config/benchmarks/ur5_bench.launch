@@ -1,0 +1,35 @@
+<launch>
+  <env name="ROSCONSOLE_CONFIG_FILE"
+       value="$(find ur5_robotiq85_moveit_config)/custom_rosconsole.conf"/>
+
+  <arg name="limited" default="false"/>
+  <!--arg name="planner" default="ompl_luna"/-->
+  <arg name="collisions" default="FCL"/>
+  <!-- benchmark options file -->
+  <arg name="bench_opts" default="$(find ur5_robotiq85_moveit_config)/benchmarks/bench_scene_planner_params/multiple_plugin-test.yaml"/>
+
+  <!-- Load robot settings -->
+  <include file="$(find ur5_robotiq85_moveit_config)/launch/planning_context.launch">
+    <arg name="load_robot_description" value="true"/>
+    <!--arg name="limited" default="$(arg limited)"/-->
+  </include>
+
+  <!-- Load all planning pipelines that will be benchmarked -->
+  <include ns="moveit_run_benchmark" file="$(find ur5_robotiq85_moveit_config)/launch/planning_pipeline.launch.xml">
+    <arg name="pipeline" value="ompl_luna" />
+  </include>
+  <include ns="moveit_run_benchmark" file="$(find ur5_robotiq85_moveit_config)/launch/planning_pipeline.launch.xml">
+    <arg name="pipeline" value="stomp" />
+  </include>
+
+  <!-- Load warehouse containing scenes and queries to benchmark -->
+  <include file="$(find ur5_robotiq85_moveit_config)/launch/default_warehouse_db.launch" />
+
+  <!-- Launch benchmark node -->
+  <node name="moveit_run_benchmark" pkg="moveit_ros_benchmarks" type="moveit_run_benchmark" output="screen" required="true">
+    <rosparam command="load" file="$(arg bench_opts)"/>
+    <param name="collision_detector" value="$(arg collisions)"/>
+  </node>
+</launch>
+
+<!-- launch-prefix="gdb -x $(find ur5_robotiq85_moveit_config)/launch/gdb_settings.gdb \-\-ex run \-\-args" -->

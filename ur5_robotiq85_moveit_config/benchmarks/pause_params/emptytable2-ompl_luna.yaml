@@ -9,15 +9,15 @@ benchmark_config:
     warehouse:
         host: 127.0.0.1
         port: 33829
-        scene_name: verticalnarrowpath     # Required
+        scene_name: emptytable     # Required
     parameters:
-        name: verticalnarrowpath-stomp
+        name: emptytable2-ompl_luna
         runs: 10
         group: manipulator       # Required
         timeout: 10.0
         output_directory: /home/brycew/opt_benchmarks/raw
-        queries: outside-to-inside-spheres
+        queries: random
     planners:
-        - plugin: stomp_moveit/StompPlannerManager
+        - plugin: ompl_interface/OMPLPlanningContextManager
           planners:
-            - stomp
+            - BITstarkConfigDefault

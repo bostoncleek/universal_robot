@@ -16,7 +16,9 @@ benchmark_config:
         group: manipulator       # Required
         timeout: 10.0
         output_directory: /home/brycew/opt_benchmarks/raw
-        queries: right-to-left
+        queries: 
+            - right-to-left
+            - same-orentation-r-to-l-spheres
     planners:
         - plugin: stomp_moveit/StompPlannerManager
           planners:

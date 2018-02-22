@@ -9,15 +9,21 @@ benchmark_config:
     warehouse:
         host: 127.0.0.1
         port: 33829
-        scene_name: verticalnarrowpath     # Required
+        scene_name: shortcolumn     # Required
     parameters:
-        name: verticalnarrowpath-stomp
+        name: shortcolumn-all
         runs: 10
         group: manipulator       # Required
         timeout: 10.0
         output_directory: /home/brycew/opt_benchmarks/raw
-        queries: outside-to-inside-spheres
+        queries: right-to-left
     planners:
         - plugin: stomp_moveit/StompPlannerManager
           planners:
             - stomp
+        - plugin: ompl_interface/OMPLPlanningContextManager
+          planners:
+            - RRTkConfigDefault
+            - RRTstarkConfigDefault
+            - FMTkConfigDefault
+            - BITstarkConfigDefault

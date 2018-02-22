@@ -16,7 +16,7 @@ benchmark_config:
         group: manipulator       # Required
         timeout: 10.0
         output_directory: /home/brycew/opt_benchmarks/raw
-        queries: bottom-to-top
+        queries: bottom-to-top-spheres
     planners:
         - plugin: stomp_moveit/StompPlannerManager
           planners:

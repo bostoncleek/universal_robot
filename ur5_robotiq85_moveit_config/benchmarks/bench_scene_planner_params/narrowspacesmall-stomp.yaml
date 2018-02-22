@@ -16,14 +16,8 @@ benchmark_config:
         group: manipulator       # Required
         timeout: 10.0
         output_directory: /home/brycew/opt_benchmarks/raw
-        queries: bottom-to-top
+        queries: bottom-to-top-spheres
     planners:
-        #- plugin: ompl_interface/OMPLPlanningContextManager
-        #  planners:
-        #    - TrajOptkConfigDefault
-        #- plugin: ompl_interface/OMPLPlanningContextManager
-        #  planners:
-        #    - RRTkConfigDefault
         - plugin: stomp_moveit/StompPlannerManager
           planners:
             - stomp
