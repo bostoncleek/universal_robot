@@ -31,6 +31,7 @@
   <run_depend>robotiq_force_torque_sensor</run_depend>
   <run_depend>robotiq_85_description</run_depend>
   <run_depend>robotiq_85_gazebo</run_depend>
+  <run_depend>robotiq_85_msgs</run_depend>
 
 
   <export>
