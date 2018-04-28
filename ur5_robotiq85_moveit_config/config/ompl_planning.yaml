@@ -145,6 +145,8 @@ manipulator:
     - LazyPRMstarkConfigDefault
     - SPARSkConfigDefault
     - SPARStwokConfigDefault
+  projection_evaluator: link(ee_link)
+  longest_valid_segment_fraction: 0.001
 gripper:
   planner_configs:
     - SBLkConfigDefault

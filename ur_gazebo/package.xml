@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <name>ur_gazebo</name>
-  <version>1.1.9</version>
+  <version>1.2.0</version>
   <description>
       Gazebo wrapper for the Universal UR5/10 robot arms.
   </description>
@@ -26,6 +26,12 @@
   <run_depend>effort_controllers</run_depend>
   <run_depend>robot_state_publisher</run_depend>
   <run_depend>controller_manager</run_depend>
+
+  <!-- Dependencies for robotiq-->
+  <run_depend>robotiq_force_torque_sensor</run_depend>
+  <run_depend>robotiq_85_description</run_depend>
+  <run_depend>robotiq_85_gazebo</run_depend>
+  <run_depend>robotiq_85_msgs</run_depend>
 
 
   <export>

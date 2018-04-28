@@ -20,7 +20,11 @@ if __name__ == "__main__":
     model_config.urdf_param_name = "robot_description"
 
     model_config.joint_names = ["shoulder_lift_joint", "wrist_1_joint"]
-    model_config.joint_positions = [-1.5070, -1.5707]
+    model_config.joint_positions = [-1.5707, -1.5707]
+
+    rospy.wait_for_service('/gazebo/pause_physics', timeout=10.0)
+    pause_gazebo = rospy.ServiceProxy('/gazebo/pause_physics', Empty)
+    pause_gazebo()
 
     rospy.wait_for_service('/gazebo/set_model_configuration', timeout=10.0)
     # allow plenty of time for gazebo to load the robot first

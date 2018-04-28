@@ -26,10 +26,10 @@
     </group>
     <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
     <group_state name="home" group="manipulator">
-        <joint name="elbow_joint" value="0" />
-        <joint name="shoulder_lift_joint" value="0" />
+        <joint name="elbow_joint" value="0.0" />
+        <joint name="shoulder_lift_joint" value="-1.57" />
         <joint name="shoulder_pan_joint" value="0" />
-        <joint name="wrist_1_joint" value="0" />
+        <joint name="wrist_1_joint" value="-1.57" />
         <joint name="wrist_2_joint" value="0" />
         <joint name="wrist_3_joint" value="0" />
     </group_state>
@@ -143,6 +143,13 @@
     <disable_collisions link1="wrist_1_link" link2="wrist_2_link" reason="Adjacent" />
     <disable_collisions link1="wrist_1_link" link2="wrist_3_link" reason="Never" />
     <disable_collisions link1="wrist_2_link" link2="wrist_3_link" reason="Adjacent" />
+    <disable_collisions link1="fts_toolside" link2="ee_link" reason="Adjacent" />
+    <disable_collisions link1="fts_robotside" link2="ee_link" reason="Adjacent" />
+    <disable_collisions link1="fts_toolside" link2="robotiq_85_base_link" reason="Adjacent" />
+    <disable_collisions link1="fts_robotside" link2="robotiq_85_base_link" reason="Adjacent" />
+    <disable_collisions link1="fts_toolside" link2="wrist_3_link" reason="Adjacent" />
+    <disable_collisions link1="fts_robotside" link2="wrist_3_link" reason="Adjacent" />
+
 
  <disable_collisions link1="robotiq_85_left_finger_tip_link" link2="robotiq_85_right_finger_tip_link" reason="Adjacent" />
 </robot>
