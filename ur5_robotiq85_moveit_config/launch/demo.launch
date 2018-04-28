@@ -8,6 +8,10 @@
   <!-- By default, we are not in debug mode -->
   <arg name="debug" default="false" />
 
+  <!-- Specific planning arguments: see planning_execution for more details. -->
+  <arg name="planner" default="ompl_luna"/>
+  <arg name="collisions" default="FCL"/>
+
   <!-- Load the URDF, SRDF and other .yaml configuration files on the param server -->
   <include file="$(find ur5_robotiq85_moveit_config)/launch/planning_context.launch">
     <arg name="load_robot_description" value="true"/>
