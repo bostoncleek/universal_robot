@@ -1,10 +1,4 @@
 planner_configs:
-  TrajOptkConfigDefault:
-    plugin: ompl_interface/TrajOptPlanningContext # Fully qualified name of the plugin.
-    type: geometric::TrajOpt
-    range: 0.0 # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
-    safety_distance: 0.001 # Distance at which penalities start to occur.
-    waypoints: 20 # Number of waypoints to start the path with.
   BITstarkConfigDefault:
     plugin: ompl_interface/GeometricPlanningContext
     type: geometric::BITstar
@@ -156,7 +150,6 @@ planner_configs:
     max_failures: 5000  # maximum consecutive failure limit. default: 5000
 manipulator:
   planner_configs:
-    - TrajOptkConfigDefault
     - BITstarkConfigDefault
     - SBLkConfigDefault
     - ESTkConfigDefault
@@ -183,7 +176,6 @@ manipulator:
     - SPARStwokConfigDefault
 gripper:
   planner_configs:
-    - TrajOptkConfigDefault
     - SBLkConfigDefault
     - ESTkConfigDefault
     - LBKPIECEkConfigDefault
