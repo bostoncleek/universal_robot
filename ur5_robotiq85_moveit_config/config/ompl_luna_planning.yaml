@@ -159,54 +159,56 @@ planner_configs:
     plugin: ompl_interface/GeometricPlanningContext
     type: geometric::BITstar
     range: 0.0
+
 manipulator:
   planner_configs:
-    - BITstarkConfigDefault
     - SBLkConfigDefault
     - ESTkConfigDefault
-    - LBKPIECEkConfigDefault
-    - BKPIECEkConfigDefault
+    - BiESTkConfigDefault
+    - ProjESTkConfigDefault
     - KPIECEkConfigDefault
+    - BKPIECEkConfigDefault
+    - LBKPIECEkConfigDefault
     - RRTkConfigDefault
     - RRTConnectkConfigDefault
     - RRTstarkConfigDefault
     - TRRTkConfigDefault
-    - PRMkConfigDefault
-    - PRMstarkConfigDefault
-    - FMTkConfigDefault
-    - BFMTkConfigDefault
-    - PDSTkConfigDefault
-    - STRIDEkConfigDefault
     - BiTRRTkConfigDefault
     - LBTRRTkConfigDefault
-    - BiESTkConfigDefault
-    - ProjESTkConfigDefault
+    - PRMkConfigDefault
+    - PRMstarkConfigDefault
     - LazyPRMkConfigDefault
     - LazyPRMstarkConfigDefault
     - SPARSkConfigDefault
     - SPARStwokConfigDefault
+    - PDSTkConfigDefault
+    - STRIDEkConfigDefault
+    - FMTkConfigDefault
+    - BFMTkConfigDefault
+    - BITstarkConfigDefault
 gripper:
   planner_configs:
     - SBLkConfigDefault
     - ESTkConfigDefault
-    - LBKPIECEkConfigDefault
-    - BKPIECEkConfigDefault
+    - BiESTkConfigDefault
+    - ProjESTkConfigDefault
     - KPIECEkConfigDefault
+    - BKPIECEkConfigDefault
+    - LBKPIECEkConfigDefault
     - RRTkConfigDefault
     - RRTConnectkConfigDefault
     - RRTstarkConfigDefault
     - TRRTkConfigDefault
-    - PRMkConfigDefault
-    - PRMstarkConfigDefault
-    - FMTkConfigDefault
-    - BFMTkConfigDefault
-    - PDSTkConfigDefault
-    - STRIDEkConfigDefault
     - BiTRRTkConfigDefault
     - LBTRRTkConfigDefault
-    - BiESTkConfigDefault
-    - ProjESTkConfigDefault
+    - PRMkConfigDefault
+    - PRMstarkConfigDefault
     - LazyPRMkConfigDefault
     - LazyPRMstarkConfigDefault
     - SPARSkConfigDefault
     - SPARStwokConfigDefault
+    - PDSTkConfigDefault
+    - STRIDEkConfigDefault
+    - FMTkConfigDefault
+    - BFMTkConfigDefault
+    - BITstarkConfigDefault
