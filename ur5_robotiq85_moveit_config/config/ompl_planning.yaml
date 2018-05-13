@@ -1,4 +1,7 @@
 planner_configs:
+  BITstarkConfigDefault:
+    type: geometric::BITstar
+    range: 0.0  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
   SBLkConfigDefault:
     type: geometric::SBL
     range: 0.0  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
@@ -122,6 +125,7 @@ planner_configs:
     max_failures: 5000  # maximum consecutive failure limit. default: 5000
 manipulator:
   planner_configs:
+    - BITstarkConfigDefault
     - SBLkConfigDefault
     - ESTkConfigDefault
     - LBKPIECEkConfigDefault
@@ -149,6 +153,7 @@ manipulator:
   longest_valid_segment_fraction: 0.001
 gripper:
   planner_configs:
+    - BITstarkConfigDefault
     - SBLkConfigDefault
     - ESTkConfigDefault
     - LBKPIECEkConfigDefault
