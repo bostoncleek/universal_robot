@@ -1,7 +1,10 @@
 <launch>
   <arg name="serial_id" default="ttyUSB0"/>
-  <node name="force_torque_sensor" pkg="robotiq_force_torque_sensor" type="rq_sensor" output="screen">
-      <param name="serial_id" value="$(arg serial_id)"/> 
-  </node>
+  <arg name="prefix" default=""/>
+  <group ns="$(arg prefix)">
+      <node name="force_torque_sensor" pkg="robotiq_force_torque_sensor" type="rq_sensor" output="screen">
+          <param name="serial_id" value="$(arg serial_id)"/> 
+      </node>
+  </group>
 
 </launch>
