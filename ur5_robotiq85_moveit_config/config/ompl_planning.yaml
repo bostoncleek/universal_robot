@@ -145,6 +145,7 @@ manipulator:
     - LazyPRMstarkConfigDefault
     - SPARSkConfigDefault
     - SPARStwokConfigDefault
+  longest_valid_segment_fraction: 0.001
 gripper:
   planner_configs:
     - SBLkConfigDefault
