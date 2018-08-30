@@ -9,8 +9,8 @@ controller_list:
       - wrist_1_joint
       - wrist_2_joint
       - wrist_3_joint
-  - name: "right_gripper"
-    action_ns: right_moveit_robotiq_commander
+  - name: "gripper"
+    action_ns: moveit_robotiq_commander
     type: FollowJointTrajectory
     default: true
     joints:

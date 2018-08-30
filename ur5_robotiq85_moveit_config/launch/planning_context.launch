@@ -16,7 +16,7 @@
   <param name="$(arg robot_description)_semantic" textfile="$(find ur5_robotiq85_moveit_config)/config/$(arg prefix)ur5_robotiq85.srdf" />
 
    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
-    <rosparam param="source_list">[manipulator/joint_states, right_gripper/joint_states]</rosparam>
+    <rosparam param="source_list">[manipulator/joint_states, gripper/joint_states]</rosparam>
   </node>
 
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
