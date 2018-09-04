@@ -75,7 +75,7 @@ if (AMINO_FOUND AND COMPILE_SCENEGRAPHS)
     set(TWO_ARM_C two-arm-scene.c)
     set(TWO_ARM_LIB kavrakilab-two-arm-scene)
     set(ENV{ROS_PACKAGE_PATH}
-        "${CMAKE_SOURCE_DIR}/..:${CMAKE_SOURCE_DIR}/../../robotiq_85_gripper:$ENV{ROS_PACKAGE_PATH}")
+        "${CMAKE_CURRENT_SOURCE_DIR}/..:${CMAKE_CURRENT_SOURCE_DIR}/../../robotiq_85_gripper:$ENV{ROS_PACKAGE_PATH}")
 
     add_custom_command(OUTPUT ur5_robotiq_robot_limited.urdf COMMAND
                         rosrun xacro xacro --inorder -o ur5_robotiq_robot_limited.urdf ${CMAKE_CURRENT_SOURCE_DIR}/urdf/ur5_robotiq_robot_limited.urdf.xacro)
