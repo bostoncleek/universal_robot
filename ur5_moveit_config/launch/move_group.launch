@@ -36,7 +36,7 @@
 
   <!-- Sensors Functionality -->
   <include ns="move_group" file="$(find ur5_moveit_config)/launch/sensor_manager.launch.xml" if="$(arg allow_trajectory_execution)">
-    <arg name="moveit_sensor_manager" value="ur5" /> 
+    <arg name="moveit_sensor_manager" value="ur5" />
   </include>
 
   <!-- Start the actual move_group node/action server -->
@@ -50,7 +50,6 @@
 
     <!-- MoveGroup capabilities to load -->
     <param name="capabilities" value="move_group/MoveGroupCartesianPathService
-				      move_group/MoveGroupExecuteService
 				      move_group/MoveGroupKinematicsService
 				      move_group/MoveGroupMoveAction
 				      move_group/MoveGroupPickPlaceAction
