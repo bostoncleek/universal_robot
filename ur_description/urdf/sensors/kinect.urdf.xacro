@@ -1,13 +1,15 @@
 <?xml version="1.0"?>
 <robot name="sensor_kinect" xmlns:xacro="http://ros.org/wiki/xacro">
-   
+
 <xacro:include filename="$(find ur_description)/urdf/sensors/kinect_gazebo.urdf.xacro"/>
 
 
   <xacro:include filename="$(find ur_description)/urdf/sensors/kinect_properties.urdf.xacro"/>
- 
+
 
   <xacro:macro name="sensor_kinect" params="parent">
+
+    <link name="camera_rgb_frame"/>
 
     <joint name="camera_rgb_joint" type="fixed">
       <origin xyz="${cam_px} ${cam_py} ${cam_pz}" rpy="${cam_or} ${cam_op} ${cam_oy}"/>
@@ -15,7 +17,8 @@
       <child link="camera_rgb_frame" />
     </joint>
 
-    <link name="camera_rgb_frame"/>
+
+    <link name="camera_rgb_optical_frame"/>
 
     <joint name="camera_rgb_optical_joint" type="fixed">
       <origin xyz="0 0 0" rpy="${-M_PI/2} 0 ${-M_PI/2}" />
@@ -23,15 +26,8 @@
       <child link="camera_rgb_optical_frame" />
     </joint>
 
-    <link name="camera_rgb_optical_frame"/>
 
-    <joint name="camera_joint" type="fixed">
-      <origin xyz="0 ${-cam_py} 0" rpy="0 0 0"/>
-      <parent link="camera_rgb_frame"/>
-      <child link="camera_link"/>
-    </joint> 
- 
-      <link name="camera_link">
+  <link name="camera_link">
       <visual>
        <origin xyz="0 0 0" rpy="0 0 ${M_PI/2}"/>
         <geometry>
@@ -53,23 +49,36 @@
       </inertial>
     </link>
 
-    <!-- The fixed joints & links below are usually published by static_transformers launched by the OpenNi launch 
+
+    <joint name="camera_joint" type="fixed">
+      <!-- <origin xyz="0 ${-cam_py} 0" rpy="0 0 0"/> -->
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <parent link="camera_rgb_frame"/>
+      <child link="camera_link"/>
+    </joint>
+
+
+
+    <!-- The fixed joints & links below are usually published by static_transformers launched by the OpenNi launch
          files. However, for Gazebo simulation we need them, so we add them here.
          (Hence, don't publish them additionally!) -->
+  <link name="camera_depth_frame"/>
+
 	<joint name="camera_depth_joint" type="fixed">
-	  <origin xyz="0 ${-cam_py} 0" rpy="0 0 0" />
+	  <!-- <origin xyz="0 ${-cam_py} 0" rpy="0 0 0" /> -->
+    <origin xyz="0 0 0" rpy="0 0 0" />
 	  <parent link="camera_rgb_frame" />
 	  <child link="camera_depth_frame" />
 	</joint>
-	<link name="camera_depth_frame"/>
+
+  <link name="camera_depth_optical_frame"/>
 
 	<joint name="camera_depth_optical_joint" type="fixed">
 	  <origin xyz="0 0 0" rpy="${-M_PI/2} 0 ${-M_PI/2}" />
 	  <parent link="camera_depth_frame" />
 	  <child link="camera_depth_optical_frame" />
 	</joint>
-	<link name="camera_depth_optical_frame"/>
-	
+
 	<!-- Kinect sensor for simulation -->
 	<ur5_sim_3dsensor/>
   </xacro:macro>

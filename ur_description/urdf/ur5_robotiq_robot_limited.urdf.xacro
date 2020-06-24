@@ -17,12 +17,12 @@
   <link name="box_link">
     <visual>
       <geometry>
-        <box size="0.762 1.524 0.9144"/>
+        <box size="3 3 0.9144"/>
       </geometry>
     </visual>
     <collision>
       <geometry>
-        <box size="0.762 1.524 0.9144"/>
+        <box size="3 3 0.9144"/>
       </geometry>
     </collision>
     <inertial>
@@ -42,7 +42,7 @@
  <joint name="box_joint" type="fixed">
     <parent link="box_link"/>
     <child link="base_link"/>
-    <origin xyz="0.0 -0.381 0.4572" rpy="0 0 1.57" />
+    <origin xyz="0.0 -1.2 0.4572" rpy="0 0 1.57" />
  </joint>
 
  <!-- Force Torque Sensor -->
@@ -61,5 +61,8 @@
    </xacro:robotiq_85_gripper>
 
 <!--origin xyz="0.0 0 0.025" rpy="0.0 -1.57 1.57"/-->
-
+  <!--kinect  -->
+  <xacro:include filename="$(find ur_description)/urdf/sensors/kinect.urdf.xacro"/>
+  <!--attach the kinect to the robot -->
+  <xacro:sensor_kinect  parent="base_link"/>
 </robot>
