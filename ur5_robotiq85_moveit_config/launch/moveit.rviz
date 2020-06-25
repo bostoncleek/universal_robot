@@ -6,9 +6,13 @@ Panels:
       Expanded:
         - /MotionPlanning1
         - /MotionPlanning1/Planning Request1
+        - /TF1
         - /TF1/Frames1
-      Splitter Ratio: 0.7425600290298462
-    Tree Height: 267
+        - /PointCloud21/Status1
+        - /GraspList1
+        - /GraspList1/Status1
+      Splitter Ratio: 0.4743243157863617
+    Tree Height: 353
   - Class: rviz/Help
     Name: Help
   - Class: rviz/Views
@@ -16,6 +20,8 @@ Panels:
       - /Current View1
     Name: Views
     Splitter Ratio: 0.5
+  - Class: rviz_visual_tools/RvizVisualToolsGui
+    Name: RvizVisualToolsGui
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -398,19 +404,115 @@ Visualization Manager:
       Value: true
       Velocity_Scaling_Factor: 1
     - Class: rviz/TF
-      Enabled: false
+      Enabled: true
       Frame Timeout: 15
       Frames:
         All Enabled: false
+        base:
+          Value: false
+        base_link:
+          Value: true
+        box_link:
+          Value: false
+        camera_depth_frame:
+          Value: false
+        camera_depth_optical_frame:
+          Value: false
+        camera_link:
+          Value: false
+        camera_rgb_frame:
+          Value: false
+        camera_rgb_optical_frame:
+          Value: true
+        ee_link:
+          Value: true
+        forearm_link:
+          Value: false
+        fts_robotside:
+          Value: false
+        fts_toolside:
+          Value: false
+        robotiq_85_base_link:
+          Value: false
+        robotiq_85_left_finger_link:
+          Value: false
+        robotiq_85_left_finger_tip_link:
+          Value: false
+        robotiq_85_left_inner_knuckle_link:
+          Value: false
+        robotiq_85_left_knuckle_link:
+          Value: false
+        robotiq_85_right_finger_link:
+          Value: false
+        robotiq_85_right_finger_tip_link:
+          Value: false
+        robotiq_85_right_inner_knuckle_link:
+          Value: false
+        robotiq_85_right_knuckle_link:
+          Value: false
+        robotiq_force_torque_frame_id:
+          Value: false
+        shoulder_link:
+          Value: false
+        tool0:
+          Value: false
+        upper_arm_link:
+          Value: false
+        world:
+          Value: false
+        wrist_1_link:
+          Value: false
+        wrist_2_link:
+          Value: false
+        wrist_3_link:
+          Value: false
       Marker Scale: 1
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: true
       Tree:
-        {}
+        world:
+          box_link:
+            base_link:
+              base:
+                {}
+              camera_rgb_frame:
+                camera_depth_frame:
+                  camera_depth_optical_frame:
+                    {}
+                camera_link:
+                  {}
+                camera_rgb_optical_frame:
+                  {}
+              shoulder_link:
+                upper_arm_link:
+                  forearm_link:
+                    wrist_1_link:
+                      wrist_2_link:
+                        wrist_3_link:
+                          ee_link:
+                            fts_robotside:
+                              fts_toolside:
+                                robotiq_85_base_link:
+                                  robotiq_85_left_inner_knuckle_link:
+                                    robotiq_85_left_finger_tip_link:
+                                      {}
+                                  robotiq_85_left_knuckle_link:
+                                    robotiq_85_left_finger_link:
+                                      {}
+                                  robotiq_85_right_inner_knuckle_link:
+                                    robotiq_85_right_finger_tip_link:
+                                      {}
+                                  robotiq_85_right_knuckle_link:
+                                    robotiq_85_right_finger_link:
+                                      {}
+                              robotiq_force_torque_frame_id:
+                                {}
+                          tool0:
+                            {}
       Update Interval: 0
-      Value: false
+      Value: true
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
@@ -441,6 +543,31 @@ Visualization Manager:
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
+    - Alpha: 1
+      Class: rviz/RobotModel
+      Collision Enabled: false
+      Enabled: false
+      Links:
+        All Links Enabled: true
+        Expand Joint Details: false
+        Expand Link Details: false
+        Expand Tree: false
+        Link Tree Style: Links in Alphabetic Order
+      Name: RobotModel
+      Robot Description: cracker_box_description
+      TF Prefix: ""
+      Update Interval: 0
+      Value: false
+      Visual Enabled: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: /detect_grasps/plot_grasps
+      Name: GraspList
+      Namespaces:
+        finger: true
+        hand_base: true
+      Queue Size: 100
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -453,34 +580,35 @@ Visualization Manager:
       Hide Inactive Objects: true
     - Class: rviz/MoveCamera
     - Class: rviz/Select
+    - Class: rviz_visual_tools/KeyTool
   Value: true
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 4.770999431610107
+      Distance: 5.015074729919434
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.11356700211763382
-        Y: 0.10592000186443329
-        Z: 2.2351800055275817e-7
+        X: -1.1579246520996094
+        Y: 0.761705756187439
+        Z: -1.341098823104403e-7
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.22020301222801208
+      Pitch: 0.11020325869321823
       Target Frame: world
       Value: XYOrbit (rviz)
-      Yaw: 6.114969253540039
+      Yaw: 5.729970932006836
     Saved: ~
 Window Geometry:
   Displays:
     collapsed: false
-  Height: 955
+  Height: 1003
   Help:
     collapsed: false
   Hide Left Dock: false
@@ -489,9 +617,11 @@ Window Geometry:
     collapsed: false
   MotionPlanning - Trajectory Slider:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd0000000100000000000002a200000361fc0200000008fb000000100044006900730070006c006100790073010000003d00000148000000c900fffffffb0000000800480065006c00700000000342000000bb0000006e00fffffffb0000000a0056006900650077007300000003b0000000b0000000a400fffffffb0000000c00430061006d00650072006100000002ff000001610000000000000000fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000374000001890000000000000000fb0000002e004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d00200053006c00690064006500720000000000ffffffff0000000000000000fb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e0067010000018b000002130000019b00fffffffb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000004100ffffff000003d60000036100000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd0000000100000000000002e600000391fc0200000009fb000000100044006900730070006c006100790073010000003d0000019e000000c900fffffffb0000000800480065006c00700000000342000000bb0000006e00fffffffb0000000a0056006900650077007300000003b0000000b0000000a400fffffffb0000000c00430061006d00650072006100000002ff000001610000000000000000fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000374000001890000000000000000fb0000002e004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d00200053006c00690064006500720000000000ffffffff0000000000000000fb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e006701000001e1000001a60000019b00fffffffb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000004100fffffffb00000024005200760069007a00560069007300750061006c0054006f006f006c0073004700750069010000038d000000410000004100ffffff000003c90000039100000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  RvizVisualToolsGui:
+    collapsed: false
   Views:
     collapsed: false
-  Width: 1662
-  X: 2076
-  Y: 17
+  Width: 1717
+  X: 175
+  Y: 47
