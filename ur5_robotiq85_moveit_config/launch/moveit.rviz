@@ -463,30 +463,30 @@ Visualization Manager:
       Value: false
       Visual Enabled: true
     - Class: rviz/MarkerArray
-      Enabled: false
+      Enabled: true
       Marker Topic: /detect_grasps/plot_grasps
       Name: GraspList
-      Namespaces:
-        {}
-      Queue Size: 100
-      Value: false
-    - Class: rviz/MarkerArray
-      Enabled: true
-      Marker Topic: /grasp_candidate
-      Name: GraspCandidate
       Namespaces:
         finger: true
         hand_base: true
       Queue Size: 100
       Value: true
-    - Class: rviz/Marker
+    - Class: rviz/MarkerArray
       Enabled: true
+      Marker Topic: /grasp_candidate
+      Name: GraspCandidate
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: false
       Marker Topic: /grasp_approach
       Name: approach
       Namespaces:
-        approach: true
+        {}
       Queue Size: 100
-      Value: true
+      Value: false
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -504,25 +504,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 4.58103084564209
+      Distance: 4.138740062713623
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -1.2498931884765625
-        Y: 0.2875913381576538
+        X: -1.3522694110870361
+        Y: -0.14101624488830566
         Z: 1.2964015922989347e-6
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.2552030086517334
+      Pitch: 0.33020293712615967
       Target Frame: world
       Value: XYOrbit (rviz)
-      Yaw: 5.574965000152588
+      Yaw: 5.814970970153809
     Saved: ~
 Window Geometry:
   Displays:
