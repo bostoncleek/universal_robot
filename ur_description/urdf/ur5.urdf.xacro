@@ -1,6 +1,9 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
+  <xacro:property name="transmission_hw_interface" default="hardware_interface/PositionJointInterface"/>
+
+
   <xacro:include filename="ur.transmission.xacro" />
   <xacro:include filename="ur.gazebo.xacro" />
 
@@ -316,7 +319,7 @@
       </collision>
     </link>
 
-    <xacro:ur_arm_transmission prefix="${prefix}" />
+    <xacro:ur_arm_transmission prefix="${prefix}" hw_interface="${transmission_hw_interface}" />
     <xacro:ur_arm_gazebo prefix="${prefix}" />
 
     <!-- ROS base_link to UR 'Base' Coordinates transform -->
